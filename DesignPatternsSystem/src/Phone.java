@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
-public class Phone {
+public class Phone implements Subject{
+    private ArrayList observers;
+    private Object Phone;
+
     private String phoneName;
 
     public String getPhoneName() {
@@ -39,13 +42,19 @@ public class Phone {
         return dateRemoved;
     }
 
-    public void setDateRemoved(String dateRemoved) {
+    public String getDueDate(){return dueDate;}
+
+    public void setDueDate(String dueDate){this.dueDate = dueDate;}
+
+
+
+    public void setDateRemoved(String dateRemoved, Phone phone) {
         this.dateRemoved = dateRemoved;
 
-        dateChanged();
+        dateChanged(phone);
     }
 
-    public void dateChanged(){ notifyObservers(); }
+    public void dateChanged(Phone phone){ notifyObservers(phone); }
 
 
     public void registerObserver(Observer o)
@@ -63,12 +72,12 @@ public class Phone {
         }
     }
 
-    public void notifyObservers()
+    public void notifyObservers(Phone phone)
     {
         for (int i = 0; i < observers.size(); i++)
         {
             Observer observer = (Observer)observers.get(i);
-            observer.update(dateRemoved);
+            observer.update(phone);
         }
     }
 
@@ -76,7 +85,8 @@ public class Phone {
 
     private String phoneBrand;
 
-    public Phone(int phoneID, String phoneName, String phoneBrand, int priceCost, int priceRetail, String dateRemoved, boolean paidOff, String paymentType, boolean initialPayment) {
+    public Phone(int phoneID, String phoneName, String phoneBrand, int priceCost, int priceRetail, String dateRemoved, boolean paidOff, String paymentType, boolean initialPayment, String dueDate) {
+        observers = new ArrayList();
         this.phoneID = phoneID;
         this.phoneName = phoneName;
         this.phoneBrand = phoneBrand;
@@ -86,6 +96,8 @@ public class Phone {
         this.paidOff = paidOff;
         this.paymentType = paymentType;
         this.initialPayment= initialPayment;
+        this.dueDate = dueDate;
+
 
     }
 
@@ -96,11 +108,11 @@ public class Phone {
     public void setPhoneID(int phoneID) {
         this.phoneID = phoneID;
     }
-    private ArrayList observers;
     private int phoneID;
     private int priceCost;
     private int priceRetail;
     private String dateRemoved;
+    private String dueDate;
     private boolean paidOff;
 
     public boolean isInitialPayment() {

@@ -25,7 +25,7 @@ public class InstallementPlanBehaviour implements PaymentType {
 
             DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
             Date date = new Date();
-            phone.setDateRemoved(dateFormat.format(date));
+            phone.setDateRemoved(dateFormat.format(date),phone);
 
             phone.setPaymentType("InstallementPlan");
 
@@ -40,6 +40,7 @@ public class InstallementPlanBehaviour implements PaymentType {
             c.setTime(date);
             c.add(Calendar.MONTH, monthsForPlan);
             Date dateForFutureInstallment = c.getTime();
+            phone.setDueDate(dateForFutureInstallment.toString());
 
             long diffInMillies = Math.abs(date.getTime() - dateForFutureInstallment.getTime());
             long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);

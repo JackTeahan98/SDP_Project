@@ -1,10 +1,15 @@
 import java.sql.*;
 import java.text.ParseException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","jack","jack");
+
+        System.out.println("********** Welcome to Phone Shop! **********");
+
+
 
         purchasePhone(con);
 
@@ -28,13 +33,37 @@ public class Main {
         boolean initialPayment = (intitialPaymentInt ==1);
 
         Member jack = new BasicMember(userID, allUserFields[1],allUserFields[2],allUserFields[3],allUserFields[4],balance,allUserFields[6]);
-        Phone testPhone = new Phone(phoneID, allPhoneFields[1],allPhoneFields[2],priceCost,retailCost,allPhoneFields[5], paidOff, allPhoneFields[7],initialPayment);
+        Phone testPhone = new Phone(phoneID, allPhoneFields[1],allPhoneFields[2],priceCost,retailCost,allPhoneFields[5], paidOff, allPhoneFields[7],initialPayment,"");
 
-        jack.setPaymentType(new LumpSumBehaviour());
-        System.out.println(jack.pay(jack, testPhone));
+        DisplayPurchaseReceipt phoneReceipt = new DisplayPurchaseReceipt(testPhone);
 
-        jack.setPaymentType(new InstallementPlanBehaviour());
-        System.out.println(jack.pay(jack, testPhone));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to purhase a phone?");
+        String answer = scanner.nextLine();
+
+        if(answer.equals("yes"))
+        {
+            System.out.println("Installment Plan or Once off Payment? (I or O)");
+            answer = scanner.nextLine().toUpperCase();
+
+
+            if(answer.equals("I"))
+            {
+                jack.setPaymentType(new InstallementPlanBehaviour());
+                System.out.println(jack.pay(jack, testPhone));
+            }
+
+            else if(answer.equals("O"))
+            jack.setPaymentType(new LumpSumBehaviour());
+            System.out.println(jack.pay(jack, testPhone));
+
+
+        }
+        
+        else {
+            System.out.print("Would you like to purchase a deal?");
+        }
+
 
        // updatePhone(con, testPhone);
 

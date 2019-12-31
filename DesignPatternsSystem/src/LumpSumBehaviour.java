@@ -16,12 +16,16 @@ public class LumpSumBehaviour implements PaymentType {
             String membersCurrentPhones = member.getPhonesremoved();
             member.setPhonesremoved(membersCurrentPhones +" //// "+phonePurchased);
 
-            DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
-            Date date = new Date();
-            phone.setDateRemoved(dateFormat.format(date));
-
             phone.setPaidOff(true);
             phone.setPaymentType("LumpSumPayment");
+
+            phone.setDueDate("No further dates required");
+
+            DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
+            Date date = new Date();
+            phone.setDateRemoved(dateFormat.format(date),phone);
+
+
 
             return "Lump sum of "+phone.getPriceRetail()+" successfully paid off for "+phone.getPhoneName();
 
