@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class Main {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","jack","jack");
 
-        System.out.println("********** Welcome to Phone Shop! **********");
+        System.out.println("********** Welcome to Phone Shop! **********\n");
 
 
 
@@ -59,13 +60,46 @@ public class Main {
 
 
         }
-        
-        else {
-            System.out.print("Would you like to purchase a deal?");
+
+        System.out.println("Would you like to purchase a deal?");
+        answer = scanner.nextLine().toUpperCase();
+
+        if(answer.equals("YES"))
+        {
+        PhoneBundle bundle = new Phone(testPhone);
+
+        System.out.println("Would you like to add a Case for $15?");
+        answer = scanner.nextLine().toUpperCase();
+        if(answer.equals("YES"))
+        {
+            bundle = new PhoneCase(bundle);
+        }
+
+        System.out.println("Would you like to purchase Insurance for $55?");
+        answer = scanner.nextLine().toUpperCase();
+        if(answer.equals("YES"))
+        {
+            bundle = new PhoneInsurance(bundle);
+        }
+
+        System.out.println("Would you like to purchase a Screen Protector for $10 ?");
+        answer = scanner.nextLine().toUpperCase();
+        if(answer.equals("YES"))
+        {
+            bundle = new PhoneScreenProtector(bundle);
+        }
+
+        JOptionPane.showMessageDialog(null,bundle.getDescription()+" \nTOTAL: $"+bundle.cost(testPhone));
         }
 
 
-       // updatePhone(con, testPhone);
+        System.out.println("************ Exiting System... *************");
+
+
+
+
+
+        // updatePhone(con, testPhone);
 
     }
 

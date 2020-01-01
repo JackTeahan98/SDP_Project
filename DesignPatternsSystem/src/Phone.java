@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 
-public class Phone implements Subject{
+public class Phone extends PhoneBundle implements Subject{
     private ArrayList observers;
     private Object Phone;
 
     private String phoneName;
+
+    public Phone(Phone phone) {
+    description = "Phone: "+phone.getPhoneName() +"---> $"+ phone.getPriceRetail();
+    }
 
     public String getPhoneName() {
         return phoneName;
@@ -145,4 +149,9 @@ public class Phone implements Subject{
 
 
 
+
+    @Override
+    public double cost(Phone phone) {
+        return phone.getPriceRetail();
+    }
 }
