@@ -1,12 +1,22 @@
+import Behaviours.InstallementPlanBehaviour;
+import Behaviours.LumpSumBehaviour;
+import Bundle.PhoneBundle;
+import Bundle.PhoneCase;
+import Bundle.PhoneInsurance;
+import Bundle.PhoneScreenProtector;
+import DetailsPrinter.Printer;
+import Members.BasicMember;
+import Members.Member;
+import Observer.DisplayPurchaseReceipt;
+import Phones.Phone;
+import Shop.Shop;
+
 import javax.swing.*;
 import java.sql.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
@@ -92,7 +102,7 @@ public class Main {
 
 
         }
-
+        System.out.println("\n-------------------------------------\n");
         System.out.println("Would you like to purchase a deal?");
         answer = scanner.nextLine().toUpperCase();
 
@@ -122,6 +132,38 @@ public class Main {
         }
 
         JOptionPane.showMessageDialog(null,bundle.getDescription()+" \nTOTAL: $"+bundle.cost(testPhone));
+        }
+
+        System.out.println("\n-------------------------------------\n");
+        System.out.println("Would you like to see your details "+jack.getUserName()+"?");
+        answer = scanner.nextLine().toUpperCase();
+        if(answer.equals("YES"))
+        {
+            Printer printer = new Printer(100);
+
+            System.out.println(printer);
+
+            System.out.println("Enter password for username: "+jack.getUserName()+" or press E for Exit");
+            String password = scanner.nextLine();
+            if(password.equals(jack.getUserPassword()))
+            {
+                String level = jack.getUserLevel();
+                String type = jack.getUserType();
+                int userBalance = jack.getAccountBal();
+
+                printer.enterPassword();
+                printer.selectPassword(level,type,userBalance);
+            }
+            else if(password.equals("E")) {
+                printer.rejectPassword();
+            }
+            else
+            {
+                System.out.println("Error incorrect password!");
+            }
+
+            System.out.println(printer);
+
         }
 
 
