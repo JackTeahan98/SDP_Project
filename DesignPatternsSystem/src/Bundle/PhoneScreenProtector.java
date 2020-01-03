@@ -5,7 +5,7 @@ public class PhoneScreenProtector extends PhoneDeals {
     PhoneBundle bundle;
 
     public String getDescription() {
-        return bundle.getDescription() + "\nAdd-On: Phones.Phone Screen Protector Added ---> $10";
+        return bundle.getDescription() + "\nAdd-On: Phone Screen Protector Added ---> $10";
     }
 
     public PhoneScreenProtector(PhoneBundle bundle) {

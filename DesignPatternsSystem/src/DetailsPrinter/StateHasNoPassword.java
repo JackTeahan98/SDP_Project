@@ -1,5 +1,7 @@
 package DetailsPrinter;
 
+import javax.swing.*;
+
 public class StateHasNoPassword implements State {
     Printer printer;
 
@@ -8,19 +10,20 @@ public class StateHasNoPassword implements State {
     }
 
     public void enterPassword() {
-        System.out.println("You have entered your password");
+
+        JOptionPane.showMessageDialog(null,"You have entered your password");
         printer.setState(printer.getStateHasPassword());
     }
 
     public void rejectPassword() {
-        System.out.println("You haven't entered a password");
+        JOptionPane.showMessageDialog(null,"You haven't entered a password");
     }
 
     public void selectPassword(String level, String type, int balance) {
-        System.out.println("You have tried to select, but no password detected");
+        JOptionPane.showMessageDialog(null,"You have tried to select, but no password detected");
     }
 
-    public void print(String level, String type, int balance) {System.out.println("You need to enter Password first!");
+    public void print(String level, String type, int balance) { JOptionPane.showMessageDialog(null,"You need to enter Password first!");
     }
 
     public String toString() {

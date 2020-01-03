@@ -33,7 +33,7 @@ public class Shop {
         if(open = true)
         {
             open = false;
-            description = "Closed for lunch...back soon";
+            description = "Closed for lunch...back soon\n";
             System.out.print(description);
         }
     }

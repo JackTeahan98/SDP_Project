@@ -32,7 +32,12 @@ public class Printer {
 
     public void selectPassword(String level, String type, int balance) {
         state.selectPassword(level,type,balance);
+
+    }
+
+    public void print(String level, String type, int balance) {
         state.print(level,type,balance);
+
     }
 
     void setState(State state) {

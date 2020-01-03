@@ -28,8 +28,8 @@ public class DisplayPurchaseReceipt implements Observer{
 
     public void printReceipt(Phone phone) {
         if (phone.getPaymentType() == "LumpSumPayment" || phone.getPaymentType() == "InstallementPlanCOMPLETE") {
-            JOptionPane.showMessageDialog(null, "****** Phones.Phone Receipt *****\n\n" +
-                    "Phones.Phone: " + phone.getPhoneName() + " - " + phone.getPhoneBrand() + "\n" +
+            JOptionPane.showMessageDialog(null, "****** Phone Receipt *****\n\n" +
+                    "Phone: " + phone.getPhoneName() + " - " + phone.getPhoneBrand() + "\n" +
                     "Price: $" + phone.getPriceRetail() + "\n" +
                     "Payment Type: " + phone.getPaymentType() + "\n" +
                     "Purchase Date: " + phone.getDateRemoved());

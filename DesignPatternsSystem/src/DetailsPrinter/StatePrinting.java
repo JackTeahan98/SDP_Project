@@ -11,15 +11,15 @@ public class StatePrinting implements State {
     public StatePrinting(Printer printer) {this.printer = printer;}
 
     public void enterPassword() {
-        System.out.println("Printing already in process, have patience");
+        JOptionPane.showMessageDialog(null,"Printing already in process, have patience");
     }
 
     public void rejectPassword() {
-        System.out.println("Cannot reject password now, printing in process");
+        JOptionPane.showMessageDialog(null,"Cannot reject password now, printing in process");
     }
 
     public void selectPassword(String level, String type, int balance) {
-        System.out.println("You have just selected!");
+        JOptionPane.showMessageDialog(null,"You have just selected!");
     }
 
     public void print(String level, String type, int balance) {

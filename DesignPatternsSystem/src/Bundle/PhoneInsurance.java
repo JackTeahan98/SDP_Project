@@ -5,7 +5,7 @@ public class PhoneInsurance extends PhoneDeals {
     PhoneBundle bundle;
 
     public String getDescription() {
-        return bundle.getDescription() + "\nAdd-On: Phones.Phone Insurance Added ---> $55";
+        return bundle.getDescription() + "\nAdd-On: Phone Insurance Added ---> $55";
     }
 
     public PhoneInsurance(PhoneBundle bundle) {

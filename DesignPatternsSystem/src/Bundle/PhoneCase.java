@@ -5,7 +5,7 @@ public class PhoneCase extends PhoneDeals {
     PhoneBundle bundle;
 
     public String getDescription() {
-        return bundle.getDescription() + "\nAdd-On: Phones.Phone Case Added ---> $15";
+        return bundle.getDescription() + "\nAdd-On: Phone Case Added ---> $15";
     }
 
     @Override

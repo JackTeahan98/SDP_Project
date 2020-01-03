@@ -1,5 +1,7 @@
 package DetailsPrinter;
 
+import javax.swing.*;
+
 public class StateHasPassword implements State {
     Printer printer;
 
@@ -7,22 +9,22 @@ public class StateHasPassword implements State {
         this.printer = printer;
     }
 
-    public void enterPassword() {System.out.println("You have already entered your password!");}
+    public void enterPassword() { JOptionPane.showMessageDialog(null,"You have already entered your password!");}
 
     public void rejectPassword()
     {
-        System.out.println("Password returned");
+        JOptionPane.showMessageDialog(null,"Password returned");
         printer.setState(printer.getStateHasNoPassword());
     }
 
     public void selectPassword(String level, String type, int balance)
     {
-        System.out.println("You have selected...");
+        JOptionPane.showMessageDialog(null,"You have selected...");
         printer.setState(printer.getStatePrinting());
     }
 
     public void print(String level, String type, int balance) {
-        System.out.println("No details printed...");
+        JOptionPane.showMessageDialog(null,"No details printed...");
     }
 
     public String toString() {
