@@ -35,7 +35,7 @@ public class CaseUtils {
 
             if(ans.equals("T")) {
                 Case phoneCase = backBuilder.submitCase("DESIGN");
-                System.out.println("You Selected" + phoneCase.getName() + "\n");
+                System.out.println("You Selected " + phoneCase.getName() + "\n");
             }
         }
 
