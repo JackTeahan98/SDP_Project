@@ -7,9 +7,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LumpSumBehaviour implements PaymentType {
+public class LumpSumDEMO {
 
-    public String payment(Member member, Phone phone){
+    public String paymentLumpSum(Member member, Phone phone){
 
         if(member.getAccountBal() > phone.getPriceRetail())
         {
@@ -29,10 +29,10 @@ public class LumpSumBehaviour implements PaymentType {
             Date date = new Date();
             phone.setDateRemoved(dateFormat.format(date),phone);
 
-            return "Lump sum of "+phone.getPriceRetail()+" successfully paid off for "+phone.getPhoneName();
+            return "DEMO Lump sum of "+phone.getPriceRetail()+" successfully paid off for "+phone.getPhoneName();
         }
 
-        return "Phone has not been purchased, transaction failed";
+        return "DEMO Phone has not been purchased, transaction failed";
 
     }
 }

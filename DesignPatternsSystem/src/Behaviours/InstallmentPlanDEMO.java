@@ -10,12 +10,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class InstallementPlanBehaviour implements PaymentType {
+public class InstallmentPlanDEMO {
 
     private final int monthsForPlan = 6;
 
-    @Override
-    public String payment(Member member, Phone phone) throws ParseException {
+    public String paymentInstalment(Member member, Phone phone) throws ParseException {
         int installementPrice = phone.getPriceRetail() / 2;
 
 
@@ -36,7 +35,7 @@ public class InstallementPlanBehaviour implements PaymentType {
 
 
         }
-         if (member.getAccountBal() > installementPrice && !phone.isInitialPayment() && !phone.isPaidOff())
+        if (member.getAccountBal() > installementPrice && !phone.isInitialPayment() && !phone.isPaidOff())
         {
             Date date=new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss").parse(phone.getDateRemoved());
             Calendar c = Calendar.getInstance();
@@ -58,9 +57,9 @@ public class InstallementPlanBehaviour implements PaymentType {
                 return "Phone fully paid off";
             }
 
-          return "Phone Installment section paid off";
+            return "Phone Installment section paid off";
 
         }
-         return "Phone Installment section paid off";
+        return "Phone Installment section paid off";
     }
 }
