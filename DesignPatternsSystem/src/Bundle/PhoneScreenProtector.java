@@ -16,5 +16,4 @@ public class PhoneScreenProtector extends PhoneDeals {
     public double cost(Phone phone) {
         return bundle.cost(phone) + 10;
     }
-
 }

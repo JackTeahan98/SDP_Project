@@ -16,8 +16,4 @@ public class PhoneCase extends PhoneDeals {
     public PhoneCase(PhoneBundle bundle) {
         this.bundle = bundle;
     }
-
-
-
-
 }

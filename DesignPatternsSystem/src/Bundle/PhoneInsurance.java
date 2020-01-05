@@ -16,5 +16,4 @@ public class PhoneInsurance extends PhoneDeals {
     public double cost(Phone phone) {
         return bundle.cost(phone) + 55;
     }
-
 }

@@ -9,7 +9,4 @@ public abstract class PhoneBundle {
     }
 
     public abstract double cost(Phone phone);
-
-
-
 }
