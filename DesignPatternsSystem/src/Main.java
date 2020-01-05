@@ -10,6 +10,7 @@ public class Main {
         Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","jack","jack");
 
         Shop phoneShop = Shop.getInstance();
+
         System.out.println("********** Welcome to Phone Shop! **********\n");
 
         Date date = new Date();

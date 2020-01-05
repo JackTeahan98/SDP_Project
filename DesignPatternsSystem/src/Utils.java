@@ -59,6 +59,5 @@ public class Utils
         System.out.println("************ Exiting System... *************");
 
         // updatePhone(con, testPhone);
-
     }
 }
