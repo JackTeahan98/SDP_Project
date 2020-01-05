@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class PurchaseDeal {
     public void purchaseDeal(Phone testPhone){
         PhoneBundle bundle = new Phone(testPhone);
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add a Case for $15?");
         String answer = scanner.nextLine().toUpperCase();
@@ -47,7 +46,6 @@ public class PurchaseDeal {
         {
             bundle = new PhoneScreenProtector(bundle);
         }
-
         JOptionPane.showMessageDialog(null,bundle.getDescription()+" \nTOTAL: $"+bundle.cost(testPhone));
 
     }
